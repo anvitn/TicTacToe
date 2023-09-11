@@ -7,12 +7,6 @@ import java.lang.Math;
 
 public class TicTacToe {
 
-    // Static variables for the TicTacToe class, effectively configuration options
-    // Use these instead of hard-coding ' ', 'X', and 'O' as symbols for the game
-    // In other words, changing one of these variables should change the program
-    // to use that new symbol instead without breaking anything
-    // Do NOT add additional static variables to the class!
-
     static char emptySpaceSymbol = ' ';
     static char playerOneSymbol = 'X';
     static char playerTwoSymbol = 'O';
@@ -86,7 +80,6 @@ public class TicTacToe {
 
     }
 
-    // Given a state, return a String which is the textual representation of the tic-tac-toe board at that state.
     private static String displayGameFromState(char[][] state) {
 
 
@@ -114,13 +107,9 @@ public class TicTacToe {
         return result;
 
         // Returns the state of a game that has just started.
-        // This method is implemented for you. You can use it as an example of how to utilize the static class variables.
-        // As you can see, you can use it just like any other variable, since it is instantiated and given a value already.
     }
 
     // Returns the state of a game that has just started.
-    // This method is implemented for you. You can use it as an example of how to utilize the static class variables.
-    // As you can see, you can use it just like any other variable, since it is instantiated and given a value already.
     private static char[][] getInitialGameState() {
         return new char[][]{
                 {emptySpaceSymbol, emptySpaceSymbol, emptySpaceSymbol},
@@ -128,8 +117,6 @@ public class TicTacToe {
                 {emptySpaceSymbol, emptySpaceSymbol, emptySpaceSymbol}};
     }
 
-    // Given the player names, run the two-player game.
-    // Return an ArrayList of game states of each turn -- in other words, the gameHistory
     private static ArrayList<char[][]> runTwoPlayerGame(String[] names) {
 
         //chooses who goes first
@@ -183,8 +170,8 @@ public class TicTacToe {
     }
 
     // Given the player names (where player two is "Computer"),
-    // Run the one-player game.
-    // Return an ArrayList of game states of each turn -- in other words, the gameHistory
+    // Runs the one-player game.
+    // Returns an ArrayList of game states of each turn -- in other words, the gameHistory
     private static ArrayList<char[][]> runOnePlayerGame(String[] playerNames) {
 
         ArrayList<char[][]> result = new ArrayList<>();//Arraylist to return later
@@ -223,7 +210,6 @@ public class TicTacToe {
             active = (active + 1) % 2;
         } while (!checkWin(state) && !checkDraw(state));
 
-        //the rest of the code below in this method does the same as in runTwoPlayerGame
         System.out.println(displayGameFromState(state));
         result.add(state);
 
@@ -240,8 +226,7 @@ public class TicTacToe {
     }
 
     // Repeatedly prompts player for move in current state, returning new state after their valid move is made
-    private static char[][] runPlayerMove(String playerName, char playerSymbol, char[][] currentState) { // Repeatedly prompts player for
-                                                                                                        // move in current state and makes the move
+    private static char[][] runPlayerMove(String playerName, char playerSymbol, char[][] currentState) { 
 
         int[] move;
         do {
@@ -282,7 +267,7 @@ public class TicTacToe {
         return result;
     }
 
-    // Given a [row, col] move, return true if a space is unclaimed.
+    // Given a [row, col] move, returns true if a space is unclaimed.
     // Doesn't need to check whether move is within bounds of the board.
     private static boolean checkValidMove(int[] move, char[][] state) {
 
@@ -295,10 +280,10 @@ public class TicTacToe {
     }
 
     // Given a [row, col] move, the symbol to add, and a game state,
-    // Return a NEW array (do NOT modify the argument currentState) with the new game state
+    // Returns a NEW array with the new game state
 
     // Given a [row, col] move, the symbol to add, and a game state,
-    // Return a NEW array (do NOT modify the argument currentState) with the new game state
+    // Returns a NEW array with the new game state
     private static char[][] makeMove(int[] move, char symbol, char[][] currentState) {
 
         char[][] stateCopy = new char[3][3];
@@ -316,7 +301,7 @@ public class TicTacToe {
         return stateCopy;
     }
 
-    // Given a state, return true if some player has won in that state
+    // Given a state, returns true if some player has won in that state
     private static boolean checkWin(char[][] state) {
         
         // Horizontals
@@ -382,8 +367,7 @@ public class TicTacToe {
         return true;
     }
 
-    // Given a game state, return a new game state with move from the AI
-    // It follows the algorithm in the PDF to ensure a tie (or win if possible)
+    // Given a game state, returns a new game state with move from the AI
     private static char[][] getCPUMove(char[][] gameState) {
 
         char[][] test = Arrays.copyOf(gameState, gameState.length);
@@ -486,7 +470,7 @@ public class TicTacToe {
         return test;
     }
 
-    // Given a game state, return an ArrayList of [row, column] positions that are unclaimed on the board
+    // Given a game state, returns an ArrayList of [row, column] positions that are unclaimed on the board
 
     private static ArrayList<int[]> getValidMoves(char[][] gameState) {
 
@@ -505,7 +489,7 @@ public class TicTacToe {
         return free;
     }
 
-    // Given player names and the game history, display the past game as in the PDF sample code output
+    // Given player names and the game history, displays the past game as in the PDF sample code output
     private static void runGameHistory(String[] playerNames, ArrayList<char[][]> gameHistory) {
 
 
